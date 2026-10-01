@@ -6,9 +6,10 @@
 #include <Fonts/FreeSans9pt7b.h>
 #include <Fonts/FreeSansBold12pt7b.h>
 
-// Waveshare 2.9" V2 (296x128). For a different panel, pick its class from the GxEPD2 examples.
-GxEPD2_BW<GxEPD2_290_T94_V2, GxEPD2_290_T94_V2::HEIGHT> display(
-    GxEPD2_290_T94_V2(/*CS=*/5, /*DC=*/17, /*RST=*/16, /*BUSY=*/4));
+// WeAct Studio 2.9" black/white (296x128, SSD1680).
+// For the Waveshare 2.9" V2 instead, swap GxEPD2_290_BS for GxEPD2_290_T94_V2.
+GxEPD2_BW<GxEPD2_290_BS, GxEPD2_290_BS::HEIGHT> display(
+    GxEPD2_290_BS(/*CS=*/5, /*DC=*/17, /*RST=*/16, /*BUSY=*/4));
 
 const int ART_SIZE = 128;
 const int ART_BYTES = ART_SIZE * ART_SIZE / 8;

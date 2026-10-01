@@ -20,15 +20,16 @@ The tradeoff is that my Mac has to be on for Inky to update, but since it lives 
 
 ## Parts
 
-| Part | Qty | Approx. cost | Notes |
+| Part | Qty | Approx. cost | Vendor |
 |---|---|---|---|
-| ESP32 dev board (DevKitC / DevKit V1) | 1 | $7 | With headers already soldered on |
-| Waveshare 2.9" e-Paper Module, black/white (V2) | 1 | $18 | Comes with a jumper cable |
-| Tactile push buttons (6 mm) | 3 | $1 | |
-| Mini breadboard + jumper wires (female-female, male-female) | 1 set | $4 | |
-| **Total** | | **~$30** | |
+| WeAct Studio 2.9" e-paper module, black/white | 1 | $11 | AliExpress (WeAct Studio store) |
+| ESP32 dev board (38-pin, headers already soldered) | 1 | $5 | AliExpress |
+| 6x6 mm tactile push buttons | 1 pack | $2 | AliExpress |
+| Mini breadboard | 1 | $2 | AliExpress |
+| Dupont jumper wires (female-female and male-female) | 1 set | $2 | AliExpress |
+| **Total** | | **~$22 + tax** | Tier 1 limit is $30 |
 
-I already have a USB cable. If prices come out over $30, I'll switch to the 2.13" version of the display (about $13), which only needs a one-line change in the firmware.
+I already have a USB cable. I first planned on the Waveshare 2.9" display, but it's $21.99 on Waveshare's store, which together with the ESP32 would have used up the whole $30 before buttons, wires, and tax. The WeAct display has the same size and resolution for about half the price, and it's supported by the same e-ink library.
 
 ## Wiring
 
@@ -36,11 +37,11 @@ I already have a USB cable. If prices come out over $30, I'll switch to the 2.13
 |---|---|
 | VCC | 3V3 |
 | GND | GND |
-| DIN | GPIO 23 |
-| CLK | GPIO 18 |
+| SDA (DIN) | GPIO 23 |
+| SCL (CLK) | GPIO 18 |
 | CS | GPIO 5 |
-| DC | GPIO 17 |
-| RST | GPIO 16 |
+| D/C | GPIO 17 |
+| RES | GPIO 16 |
 | BUSY | GPIO 4 |
 
 Each button connects between its pin and GND. The ESP32's internal pull-up resistors handle the rest.
