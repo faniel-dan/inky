@@ -1,10 +1,14 @@
-# Inky: Spotify e-ink display
+# Inky
 
-A little e-ink screen for my desk that shows what I'm playing on Spotify (song, artist, and dithered black-and-white album art) with buttons for previous, play/pause, and next. Built for the Hack Club Half Life warm-up (Tier 1).
+Inky is a small e-ink display that sits on my desk and shows whatever I'm playing on Spotify: the song, the artist, and the album art in black and white. It has three buttons so I can go back, pause, or skip without switching windows.
 
-**No soldering needed:** everything connects with jumper wires and a mini breadboard.
+I'm building it for the Hack Club Half Life warm-up (Tier 1). It's my first hardware project, so I kept it simple and made sure it doesn't need any soldering. Everything plugs together with jumper wires and a mini breadboard.
 
-## How it works
+## Why it works with free Spotify
+
+Most Spotify display projects I found online have the ESP32 talk to the Spotify Web API over Wi-Fi. That doesn't work for me anymore because Spotify started requiring Premium for developer access in March 2026, and I don't have Premium.
+
+So I went a different way. A small Python script runs on my Mac and asks the Spotify app what's playing. When the song changes, it downloads the album art, converts it to 128x128 black-and-white pixels with dithering (so it still looks like a picture on e-ink), and sends everything to the ESP32 over USB. When I press a button, the ESP32 sends a message back and the script tells Spotify to pause or skip.
 
 ```
 Spotify app on Mac  <->  now_playing.py  <-- USB -->  ESP32  -->  e-ink screen
@@ -12,25 +16,23 @@ Spotify app on Mac  <->  now_playing.py  <-- USB -->  ESP32  -->  e-ink screen
                                                     3 buttons
 ```
 
-- `computer/now_playing.py` asks the Spotify desktop app what's playing every 2 seconds. When the song changes, it downloads the album art, turns it into 128x128 black-and-white pixels, and sends everything to the ESP32 over USB.
-- The ESP32 (`firmware/spotify_eink/`) draws it on the e-ink screen. When a button is pressed, it sends `PREV`, `PLAYPAUSE` or `NEXT` back to the Mac, and the script tells Spotify.
-- This talks to the Spotify **app** instead of the Spotify Web API, so it works with a **free** Spotify account. The Web API has required Premium since March 2026.
+The tradeoff is that my Mac has to be on for Inky to update, but since it lives next to my computer anyway, that's fine.
 
-## Bill of materials
+## Parts
 
 | Part | Qty | Approx. cost | Notes |
 |---|---|---|---|
-| ESP32 dev board (DevKitC / DevKit V1) | 1 | $7 | Buy one with **headers already soldered** |
-| Waveshare 2.9" e-Paper Module, black/white (V2) | 1 | $18 | Comes with a jumper-wire cable, no soldering |
+| ESP32 dev board (DevKitC / DevKit V1) | 1 | $7 | With headers already soldered on |
+| Waveshare 2.9" e-Paper Module, black/white (V2) | 1 | $18 | Comes with a jumper cable |
 | Tactile push buttons (6 mm) | 3 | $1 | |
 | Mini breadboard + jumper wires (female-female, male-female) | 1 set | $4 | |
-| **Total** | | **~$30** | Tier 1 limit is $30. If it's over, use the 2.13" display (~$13) instead |
+| **Total** | | **~$30** | |
 
-USB cable: I already have one.
+I already have a USB cable. If prices come out over $30, I'll switch to the 2.13" version of the display (about $13), which only needs a one-line change in the firmware.
 
 ## Wiring
 
-| E-ink module pin | ESP32 pin |
+| E-ink module | ESP32 |
 |---|---|
 | VCC | 3V3 |
 | GND | GND |
@@ -41,26 +43,31 @@ USB cable: I already have one.
 | RST | GPIO 16 |
 | BUSY | GPIO 4 |
 
-| Button | ESP32 pin | Other leg |
-|---|---|---|
-| Previous | GPIO 32 | GND |
-| Play/pause | GPIO 33 | GND |
-| Next | GPIO 25 | GND |
+Each button connects between its pin and GND. The ESP32's internal pull-up resistors handle the rest.
+
+| Button | ESP32 |
+|---|---|
+| Previous | GPIO 32 |
+| Play/pause | GPIO 33 |
+| Next | GPIO 25 |
 
 ## Setup
 
-1. **ESP32:** in Arduino IDE, install the ESP32 boards package plus the **GxEPD2** and **Adafruit GFX** libraries. Open `firmware/spotify_eink/spotify_eink.ino` and upload it.
-2. **Mac:**
+1. Install the ESP32 boards package in Arduino IDE, along with the GxEPD2 and Adafruit GFX libraries. Then open `firmware/spotify_eink/spotify_eink.ino` and upload it.
+2. On the Mac:
    ```
    cd computer
    pip3 install -r requirements.txt
    python3 now_playing.py
    ```
-   The first time, macOS asks to let Terminal control Spotify. Click **OK**.
+   The first time it runs, macOS asks whether Terminal can control Spotify. Click OK.
 
-## Folders
+## What's in this repo
 
-- `firmware/`: ESP32 code (Arduino)
-- `computer/`: the Mac script
-- `images/`: wiring diagram, screenshots, demo
-- `JOURNAL.md`: design journal for Half Life
+- `firmware/`: the ESP32 code (Arduino)
+- `computer/`: the Python script that runs on my Mac
+- `images/`: wiring diagram, screenshots, and photos once it's built
+
+## Status
+
+The design is done and I'm waiting on parts. I'll add photos and a demo once it's built.
