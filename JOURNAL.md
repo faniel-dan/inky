@@ -39,4 +39,4 @@ I also planned out all the wiring (it's in the [README](README.md)) and set up t
 
 **tl;dr:** Spotify's API needs Premium now, so Inky gets the song from the Spotify app on my Mac over USB instead. Works with free Spotify!
 
-**Total time spent: 1.5h**
+**Total time spent: 2h**
