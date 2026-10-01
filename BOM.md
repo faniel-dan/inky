@@ -19,7 +19,7 @@
 | [Dupont jumper wires, Female to Female, 20cm (40 pcs)](https://www.aliexpress.us/item/3256805315188857.html?spm=a2g0o.cart.0.0.792338daDeJeV0&mp=1&pdp_npi=6%40dis!USD!USD+1.33!USD+1.31!!USD+1.31!!!%402103128917908672576375603e0f5a!12000033328892975!ct!US!-1!!1!0!&gatewayAdapt=glo2usa) | Connects the e-paper display to the ESP32 | 1 | $1.31 | $1.31 | [AliExpress (YX Electronic Components)](https://www.aliexpress.us/item/3256805315188857.html?spm=a2g0o.cart.0.0.792338daDeJeV0&mp=1&pdp_npi=6%40dis!USD!USD+1.33!USD+1.31!!USD+1.31!!!%402103128917908672576375603e0f5a!12000033328892975!ct!US!-1!!1!0!&gatewayAdapt=glo2usa) |
 | [Dupont jumper wires, Male to Female, 20cm (40 pcs)](https://www.aliexpress.us/item/3256805315188857.html?spm=a2g0o.cart.0.0.792338daDeJeV0&mp=1&pdp_npi=6%40dis!USD!USD+1.36!USD+1.33!!USD+1.33!!!%402103128917908672576375603e0f5a!12000033328892985!ct!US!-1!!1!0!&gatewayAdapt=glo2usa) | Connects the buttons on the breadboard to the ESP32 | 1 | $1.31 | $1.31 | [AliExpress (YX Electronic Components)](https://www.aliexpress.us/item/3256805315188857.html?spm=a2g0o.cart.0.0.792338daDeJeV0&mp=1&pdp_npi=6%40dis!USD!USD+1.36!USD+1.33!!USD+1.33!!!%402103128917908672576375603e0f5a!12000033328892985!ct!US!-1!!1!0!&gatewayAdapt=glo2usa) |
 | **Parts subtotal** | — | — | — | **$22.99** | — |
-| **Tax & shipping** | — | — | — | **$0.00** | — |
-| **Total** | — | — | — | **$22.99** | — |
+| **Tax & shipping** | — | — | — | **$0.78** | — |
+| **Total** | — | — | — | **$23.77** | — |
 
-$7.01 left of the tier's funding.
+$6.23 left of the tier's funding.
